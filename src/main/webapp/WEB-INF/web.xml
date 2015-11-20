@@ -1,0 +1,83 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  
+  <!-- SPRING FRAMEWORK -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:application-context.xml</param-value>
+	</context-param>
+<!-- 		WEB-INF/spring/securityContext.xml -->
+	<filter>
+		<filter-name>hibernateFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>hibernateFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	
+    <!-- Prime FACES -->
+ 	<context-param>
+  		<param-name>primefaces.THEME</param-name>
+  		<param-value>bootstrap</param-value>
+ 	</context-param>
+  
+ 	<context-param>
+  		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+  		<param-value>true</param-value>
+ 	</context-param>
+ 	<context-param>
+  		<param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
+  		<param-value>true</param-value>
+ 	</context-param>
+ 	<context-param>
+  		<param-name>javax.faces.PROJECT_STAGE</param-name>
+	<!--   <param-value>Production</param-value> -->
+  		<param-value>Development</param-value>
+ 	</context-param>
+ 	<context-param>
+  		<param-name>javax.faces.PARTIAL_STATE_SAVING</param-name>
+  		<param-value>false</param-value>
+ 	</context-param>
+
+   <!-- Welcome Page -->
+   <welcome-file-list>
+     <welcome-file>pages/index.xhtml</welcome-file>
+   </welcome-file-list>
+
+   <!-- JSF Servlet is defined to container -->
+   <servlet>
+     <servlet-name>Faces Servlet</servlet-name>
+     <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+     <load-on-startup>1</load-on-startup>
+   </servlet>
+
+   <!-- Mapping with servlet and url for the http requests. -->
+   <servlet-mapping>
+     <servlet-name>Faces Servlet</servlet-name>
+     <url-pattern>*.xhtml</url-pattern>
+   </servlet-mapping>
+
+	<!--  SPRING SECURITY DISABLED -->
+<!-- 	<filter> -->
+<!-- 		<filter-name>springSecurityFilterChain</filter-name> -->
+<!-- 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> -->
+<!-- 	</filter> -->
+<!-- 	<filter-mapping> -->
+<!-- 		<filter-name>springSecurityFilterChain</filter-name> -->
+<!-- 		<url-pattern>/service/*</url-pattern> -->
+<!-- 	</filter-mapping> -->
+
+<!-- 	<login-config> -->
+<!-- 		<auth-method>CLIENT-CERT</auth-method> -->
+<!-- 	</login-config> -->
+</web-app>
